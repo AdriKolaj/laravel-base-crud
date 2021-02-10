@@ -20,7 +20,8 @@
               <th>Marca</th>
               <th>Nome</th>
               <th>Gradazione</th>
-              <th>Prezzo</th>
+              <th>Formato (cl)</th>
+              <th>Prezzo (&euro;)</th>
               <th>Creato il</th>
               <th>Aggiornato il</th>
             </tr>
@@ -32,9 +33,13 @@
                 <td>{{ $beer->marca }}</td>
                 <td>{{ $beer->nome }}</td>
                 <td>{{ $beer->gradazione }}</td>
+                <td>{{ $beer->cl }}</td>
                 <td>{{ $beer->prezzo }}</td>
                 <td>{{ $beer->created_at }}</td>
                 <td>{{ $beer->updated_at }}</td>
+                <td>
+                  <a href="{{ route("beers.show", ['beer' =>$beer->id]) }}" class="btn btn-outline-light">MOSTRA</a>
+                </td>
               </tr>
             @endforeach
           </tbody>
