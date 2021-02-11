@@ -10,6 +10,7 @@ class Beer extends Model
         'marca',
         'nome',
         'gradazione',
-        'prezzo'
+        'prezzo',
+        'cl'
     ];
 }
