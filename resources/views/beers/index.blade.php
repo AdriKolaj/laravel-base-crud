@@ -16,8 +16,9 @@
         <th>Gradazione</th>
         <th>Formato (cl)</th>
         <th>Prezzo (&euro;)</th>
-        <th>Creato il</th>
-        <th>Aggiornato il</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -29,10 +30,19 @@
         <td>{{ number_format($beer->gradazione, 1) }}</td>
         <td>{{ $beer->cl }}</td>
         <td>{{ number_format($beer->prezzo, 2) }}</td>
-        <td>{{ $beer->created_at }}</td>
-        <td>{{ $beer->updated_at }}</td>
-        <td>
+
+        <td class="text-center">
           <a href="{{ route("beers.show", ['beer' =>$beer->id]) }}" class="btn btn-outline-light">MOSTRA</a>
+        </td>
+        <td class="text-center">
+          <a href="{{ route("beers.edit", ['beer' =>$beer->id]) }}" class="btn btn-outline-light"><i class="far fa-edit"></i></a>
+        </td>
+        <td>
+          <form action="{{ route('beers.destroy', ['beer' =>$beer->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          </form>
         </td>
       </tr>
       @endforeach
@@ -43,6 +53,6 @@
 
 @section('footer')
   <div class="text-right">
-    <a href="{{ route("beers.create") }}" class="btn btn-lg btn-success">Crea un nuovo libro</a>  
+    <a href="{{ route("beers.create") }}" class="btn btn-lg btn-success">Crea una nuova birra</a>  
   </div>    
 @endsection
